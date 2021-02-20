@@ -1,0 +1,36 @@
+<h1 class="mt-5">{{nombre}}</h1>
+<hr/>
+<form [formGroup]="form">
+    <div class="row align-items-center mb-3">
+        <div class="col-auto">
+            <label class="col-form-label">Nombre</label>
+        </div>
+        <div class="col-auto">
+            <input class="form-control" type="text" formControlName="nombre" name="nombre" placeholder="Nombre">
+        </div>
+        <div class="col-auto">
+            <span [valido]="!validar('nombre')" formError [color]="color">
+            </span>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            <button type="submit" class="btn btn-success" (click)="changeNombre()">Guardar</button> &nbsp;
+            <button class="btn btn-success" (click)="changeColor()">Cambiar color</button>
+        </div>
+    </div>
+</form>
+
+<h3>Formulario</h3>
+<span>Valid</span>
+<pre>{{form.valid}}</pre>
+<span>Value</span>
+<pre>{{form.value | json}}</pre>
+
+<div class="row" *custom="!validar('nombre')">
+    <div class="col">
+        <div class="alert alert-primary">
+            Formulario correcto
+        </div>
+    </div>
+</div>
